@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://cj8kamgn0oc8j"]
+
+[ext_resource type="Script" uid="uid://bksuq6ob62e67" path="res://scenes/main/main.gd" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://dfp31xf31vmbi" path="res://scenes/preview/preview.tscn" id="2_iuonh"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ig7tw")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MenuBar" type="MenuBar" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="FileMenu" type="PopupMenu" parent="VBoxContainer/MenuBar"]
+unique_name_in_owner = true
+title = "File"
+
+[node name="PreviewContainer" type="SubViewportContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+stretch = true
+
+[node name="PreviewViewport" type="SubViewport" parent="VBoxContainer/PreviewContainer"]
+handle_input_locally = false
+size = Vector2i(1152, 613)
+render_target_update_mode = 4
+
+[node name="Preview" parent="VBoxContainer/PreviewContainer/PreviewViewport" instance=ExtResource("2_iuonh")]
