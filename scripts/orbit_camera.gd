@@ -10,6 +10,7 @@ extends Camera3D
 @export var max_distance := 100.0
 
 var _rotation := Vector2(PI / 4, PI / 8)
+var _last_mouse_position := Vector2.ZERO
 
 
 func _physics_process(delta: float) -> void:
@@ -30,9 +31,11 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_RIGHT:
 			if event.is_pressed():
+				_last_mouse_position = get_viewport().get_window().get_mouse_position()
 				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			else:
 				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+				Input.warp_mouse(_last_mouse_position)
 		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
 			distance = max(min_distance, distance * (1.0 - distance_step))
 		if event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
