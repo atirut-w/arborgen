@@ -2,6 +2,8 @@ extends Control
 
 
 @onready var file_menu: PopupMenu = %FileMenu
+@onready var tree_graph: GraphEdit = %TreeGraph
+@onready var tree_root: TreeRoot = %TreeRoot
 
 
 func _ready() -> void:
