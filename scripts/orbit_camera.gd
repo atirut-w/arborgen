@@ -9,25 +9,22 @@ extends Camera3D
 @export var min_distance := 1.0
 @export var max_distance := 100.0
 
-var _rotation := Vector2(PI / 4, PI / 8)
 var _last_mouse_position := Vector2.ZERO
 
 
 func _physics_process(delta: float) -> void:
-	var x := distance * cos(_rotation.y) * cos(_rotation.x)
-	var y := distance * sin(_rotation.y)
-	var z := distance * cos(_rotation.y) * sin(_rotation.x)
-
-	position = target + Vector3(x, y, -z)
-	look_at(target, Vector3.UP)
+	var x := distance * cos(rotation.x) * sin(rotation.y)
+	var y := -distance * sin(rotation.x)
+	var z := distance * cos(rotation.x) * cos(rotation.y)
+	position = target + Vector3(x, y, z)
 
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		if Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
-			_rotation.x -= event.relative.x * 0.01
-			_rotation.y += event.relative.y * 0.01
-			_rotation.y = clamp(_rotation.y, -deg_to_rad(45), deg_to_rad(45))
+			rotation.y -= event.relative.x * 0.01
+			rotation.x -= event.relative.y * 0.01
+			rotation.x = clamp(rotation.x, deg_to_rad(-89), deg_to_rad(89))
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_RIGHT:
 			if event.is_pressed():
