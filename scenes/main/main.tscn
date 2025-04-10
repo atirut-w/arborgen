@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cj8kamgn0oc8j"]
+[gd_scene load_steps=4 format=3 uid="uid://cj8kamgn0oc8j"]
 
 [ext_resource type="Script" uid="uid://bksuq6ob62e67" path="res://scenes/main/main.gd" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://dfp31xf31vmbi" path="res://scenes/preview/preview.tscn" id="2_iuonh"]
 [ext_resource type="PackedScene" uid="uid://c7a7dcsykfv7i" path="res://scenes/tree_graph/tree_graph.tscn" id="3_k2fmo"]
-[ext_resource type="PackedScene" uid="uid://b2shkd7v8ywj" path="res://graph_nodes/tree_root/tree_root.tscn" id="4_l3cfh"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -49,12 +48,3 @@ render_target_update_mode = 4
 [node name="TreeGraph" parent="VBoxContainer/HSplitContainer" instance=ExtResource("3_k2fmo")]
 unique_name_in_owner = true
 layout_mode = 2
-scroll_offset = Vector2(-100, -100)
-
-[node name="TreeRoot" parent="VBoxContainer/HSplitContainer/TreeGraph" instance=ExtResource("4_l3cfh")]
-unique_name_in_owner = true
-offset_left = 100.0
-offset_top = 100.0
-offset_right = 454.0
-offset_bottom = 219.0
-mouse_filter = 1

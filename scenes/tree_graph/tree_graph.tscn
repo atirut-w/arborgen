@@ -1,7 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://c7a7dcsykfv7i"]
+[gd_scene load_steps=3 format=3 uid="uid://c7a7dcsykfv7i"]
 
-[ext_resource type="Script" uid="uid://co13oad6g0i5h" path="res://scripts/tree_editor.gd" id="1_2y437"]
+[ext_resource type="Script" uid="uid://co13oad6g0i5h" path="res://scripts/tree_graph.gd" id="1_2y437"]
+[ext_resource type="PackedScene" uid="uid://b2shkd7v8ywj" path="res://graph_nodes/tree_root/tree_root.tscn" id="2_bibtv"]
 
 [node name="TreeGraph" type="GraphEdit"]
 size_flags_horizontal = 3
+right_disconnects = true
 script = ExtResource("1_2y437")
+
+[node name="PopupMenu" type="PopupMenu" parent="."]
+unique_name_in_owner = true
+
+[node name="TreeRoot" parent="." instance=ExtResource("2_bibtv")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 354.0
+offset_bottom = 119.0
+mouse_filter = 1
