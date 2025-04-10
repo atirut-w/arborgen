@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://c7a7dcsykfv7i"]
+
+[ext_resource type="Script" uid="uid://co13oad6g0i5h" path="res://scripts/tree_editor.gd" id="1_2y437"]
+
+[node name="TreeGraph" type="GraphEdit"]
+size_flags_horizontal = 3
+script = ExtResource("1_2y437")
