@@ -49,10 +49,13 @@ render_target_update_mode = 4
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+scroll_offset = Vector2(-100, -100)
 
 [node name="TreeRoot" parent="VBoxContainer/HSplitContainer/TreeGraph" instance=ExtResource("3_k2fmo")]
 unique_name_in_owner = true
 layout_mode = 0
-offset_right = 354.0
-offset_bottom = 119.0
+offset_left = 100.0
+offset_top = 100.0
+offset_right = 454.0
+offset_bottom = 219.0
 mouse_filter = 1
