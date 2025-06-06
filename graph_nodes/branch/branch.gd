@@ -1,5 +1,5 @@
 class_name TreeBranch
-extends Node
+extends GraphNode
 
 
 @onready var length_spinbox: SpinBox = %LengthSpinBox
