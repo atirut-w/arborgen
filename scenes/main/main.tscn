@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cj8kamgn0oc8j"]
+[gd_scene load_steps=5 format=3 uid="uid://cj8kamgn0oc8j"]
 
 [ext_resource type="Script" uid="uid://bksuq6ob62e67" path="res://scenes/main/main.gd" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://dfp31xf31vmbi" path="res://scenes/preview/preview.tscn" id="2_iuonh"]
 [ext_resource type="PackedScene" uid="uid://c7a7dcsykfv7i" path="res://scenes/tree_graph/tree_graph.tscn" id="3_k2fmo"]
+[ext_resource type="Script" uid="uid://2555spg78531" path="res://scripts/tree_generator.gd" id="3_l3cfh"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -44,6 +45,11 @@ size = Vector2i(570, 613)
 render_target_update_mode = 4
 
 [node name="Preview" parent="VBoxContainer/HSplitContainer/PreviewContainer/PreviewViewport" instance=ExtResource("2_iuonh")]
+
+[node name="TreeGenerator" type="Node3D" parent="VBoxContainer/HSplitContainer/PreviewContainer/PreviewViewport/Preview" node_paths=PackedStringArray("tree_graph")]
+script = ExtResource("3_l3cfh")
+tree_graph = NodePath("../../../../TreeGraph")
+metadata/_custom_type_script = "uid://2555spg78531"
 
 [node name="TreeGraph" parent="VBoxContainer/HSplitContainer" instance=ExtResource("3_k2fmo")]
 unique_name_in_owner = true
