@@ -29,14 +29,17 @@ func _on_delete_nodes_request(nodes: Array[StringName]) -> void:
 			print("Cannot delete root node.")
 
 
-func _on_popup_request(position: Vector2) -> void:
+func _on_popup_request(pos: Vector2) -> void:
 	var abs_pos := get_global_mouse_position()
 	_popup_menu.popup(Rect2(abs_pos.x, abs_pos.y, 0, 0))
-	_node_position = (position + scroll_offset) / zoom
+	_node_position = (pos + scroll_offset) / zoom
 
 
 func _on_connection_request(from_node: StringName, from_port: int, to_node: StringName, to_port: int) -> void:
-	connect_node(from_node, from_port, to_node, to_port)
+	if from_node != to_node:
+		connect_node(from_node, from_port, to_node, to_port)
+	else:
+		push_warning("User just tried to connect a node to itself?")
 
 
 func _on_disconnection_request(from_node: StringName, from_port: int, to_node: StringName, to_port: int) -> void:
