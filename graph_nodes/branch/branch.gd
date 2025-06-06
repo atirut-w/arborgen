@@ -3,7 +3,7 @@ extends Node
 
 
 @onready var length_spinbox: SpinBox = %LengthSpinBox
-@onready var count_spinbox: SpinBox = %CountSpinbox
+@onready var count_spinbox: SpinBox = %CountSpinBox
 
 
 var length: float:
