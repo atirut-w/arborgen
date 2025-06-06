@@ -2,6 +2,8 @@ class_name TreeGraph
 extends GraphEdit
 
 
+signal graph_changed
+
 @onready var root_node : GraphNode = %TreeRoot
 @onready var _popup_menu: PopupMenu = %PopupMenu
 
@@ -25,6 +27,7 @@ func _on_delete_nodes_request(nodes: Array[StringName]) -> void:
 		var node = get_node(String(node_name))
 		if node and node != root_node:
 			node.queue_free()
+			graph_changed.emit()
 		elif node == root_node:
 			print("Cannot delete root node.")
 
@@ -38,12 +41,14 @@ func _on_popup_request(pos: Vector2) -> void:
 func _on_connection_request(from_node: StringName, from_port: int, to_node: StringName, to_port: int) -> void:
 	if from_node != to_node:
 		connect_node(from_node, from_port, to_node, to_port)
+		graph_changed.emit()
 	else:
 		push_warning("User just tried to connect a node to itself?")
 
 
 func _on_disconnection_request(from_node: StringName, from_port: int, to_node: StringName, to_port: int) -> void:
 	disconnect_node(from_node, from_port, to_node, to_port)
+	graph_changed.emit()
 
 
 func _on_popup_menu_id_pressed(id: int) -> void:
